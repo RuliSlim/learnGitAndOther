@@ -576,16 +576,16 @@
 
   ######################################[ ram: free RAM ]#######################################
   # RAM color.
-  typeset -g POWERLEVEL9K_RAM_FOREGROUND=66
+  typeset -g POWERLEVEL9K_RAM_FOREGROUND=201
   typeset -g POWERLEVEL9K_RAM_BACKGROUND=
   # Custom icon.
-  # typeset -g POWERLEVEL9K_RAM_VISUAL_IDENTIFIER_EXPANSION='⭐'
+  typeset -g POWERLEVEL9K_RAM_VISUAL_IDENTIFIER_EXPANSION=$'\uf2db'
 
   ######################################[ load: CPU load ]######################################
   # Show average CPU load over this many last minutes. Valid values are 1, 5 and 15.
   typeset -g POWERLEVEL9K_LOAD_WHICH=5
   # Load color when load is under 50%.
-  typeset -g POWERLEVEL9K_LOAD_NORMAL_FOREGROUND=66
+  typeset -g POWERLEVEL9K_LOAD_NORMAL_FOREGROUND=201
   typeset -g POWERLEVEL9K_LOAD_NORMAL_BACKGROUND=
   # Load color when load is between 50% and 70%.
   typeset -g POWERLEVEL9K_LOAD_WARNING_FOREGROUND=178
@@ -963,7 +963,7 @@
 
   ####################################[ time: current time ]####################################
   # Current time color.
-  typeset -g POWERLEVEL9K_TIME_FOREGROUND=66
+  typeset -g POWERLEVEL9K_TIME_FOREGROUND=201
   typeset -g POWERLEVEL9K_TIME_BACKGROUND=
   # Format for the current time: 09:51:02. See `man 3 strftime`.
   typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%a-%d/%m %H:%M}'
@@ -972,7 +972,7 @@
   # behavior where they contain the end times of their preceding commands.
   typeset -g POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=false
   # Custom icon.
-  # typeset -g POWERLEVEL9K_TIME_VISUAL_IDENTIFIER_EXPANSION='⭐'
+  typeset -g POWERLEVEL9K_TIME_VISUAL_IDENTIFIER_EXPANSION=$'\uf5ec'
   # Custom prefix.
   typeset -g POWERLEVEL9K_TIME_PREFIX='%248F'
 
@@ -1026,22 +1026,22 @@
 
     # Excellent Signal (5 bars)
     if [[ ! -z "${signal// }" ]] && [[ $SNR -gt .40 ]] ; 
-      then p10k segment -t $'\uf1eb' -i $ssid -f green ; # color='%F{green}' ; symbol="\uf1eb" ;
+      then p10k segment -t $ssid -i $'\uf1eb' -f green ; # color='%F{green}' ; symbol="\uf1eb" ;
     fi
 
     # Good Signal (3-4 bars)
     if [[ ! -z "${signal// }" ]] && [[ ! $SNR -gt .40 ]] && [[ $SNR -gt .25 ]] ; 
-      then p10k segment -t $'\uf1eb' -i $ssid -f blue ; # color='%F{blue}' ; symbol="\uf1eb" ;
+      then p10k segment -t $ssid -i $'\uf1eb' -f blue ; # color='%F{blue}' ; symbol="\uf1eb" ;
     fi
 
     # Low Signal (2 bars)
     if [[ ! -z "${signal// }" ]] && [[ ! $SNR -gt .25 ]] && [[ $SNR -gt .15 ]] ; 
-      then p10k segment -t $'\uf1eb' -i $ssid -f yellow ; # color='%F{yellow}' ; symbol="\uf1eb" ;
+      then p10k segment -t $ssid -i $'\uf1eb' -f yellow ; # color='%F{yellow}' ; symbol="\uf1eb" ;
     fi
 
     # Very Low Signal (1 bar)
     if [[ ! -z "${signal// }" ]] && [[ ! $SNR -gt .15 ]] && [[ $SNR -gt .10 ]] ; 
-      then p10k segment -t $'\uf1eb' -i $ssid -f red ; # color='%F{red}' ; symbol="\uf1eb" ;
+      then p10k segment -t $ssid -i $'\uf1eb' -f red ; # color='%F{red}' ; symbol="\uf1eb" ;
     fi
 
     # No Signal - No Internet
@@ -1069,7 +1069,7 @@
       artist=`osascript -e 'tell application "Spotify" to artist of current track as string'`;
       track=`osascript -e 'tell application "Spotify" to name of current track as string'`;
 
-    p10k segment -t "$artist - $track";
+    p10k segment -t "$artist - $track" -i $'\uf1bc' -f green ;
     fi
   }
 
